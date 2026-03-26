@@ -1,0 +1,44 @@
+.why-split__header {
+  margin-bottom: 4rem;
+}
+
+.why-split__subheading {
+  font-family: var(--parix-font-mono, monospace);
+  color: var(--gruvbox-bg3, #665C54);
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+}
+
+.why-split__card {
+  padding: 3rem 2rem;
+  border: 1px solid var(--gruvbox-bg2, #504945);
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-split__card:hover {
+  border-color: var(--gruvbox-yellow, #FABD2F);
+  box-shadow: 0 0 20px rgba(250, 189, 47, 0.1);
+}
+
+.why-split__icon--text {
+  font-family: var(--parix-font-mono, monospace);
+  font-size: 1.4rem;
+  color: var(--gruvbox-green, #B8BB26);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.why-split__card-title {
+  margin-bottom: 1rem;
+}
+
+.why-split__card-text {
+  color: #A89984;
+  line-height: 1.7;
+}
+
+.why-split__cta {
+  margin-top: 4rem;
+}

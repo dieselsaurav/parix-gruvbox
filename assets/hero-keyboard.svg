@@ -1,0 +1,65 @@
+<svg width="1200" height="300" viewBox="-50 -5 1100 310" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Left half (shifted left) -->
+  <g stroke="#665C54" stroke-width="1.2" opacity="0.55" transform="translate(-40, 0)">
+    <!-- Row 1 -->
+    <rect x="0" y="28" width="48" height="48" rx="6"/>
+    <rect x="54" y="14" width="52" height="52" rx="6"/>
+    <rect x="110" y="0" width="52" height="52" rx="6"/>
+    <rect x="166" y="7" width="52" height="52" rx="6"/>
+    <rect x="222" y="14" width="52" height="52" rx="6"/>
+    <rect x="278" y="21" width="48" height="48" rx="6"/>
+
+    <!-- Row 2 -->
+    <rect x="0" y="82" width="48" height="48" rx="6"/>
+    <rect x="54" y="70" width="52" height="52" rx="6"/>
+    <rect x="110" y="56" width="52" height="52" rx="6"/>
+    <rect x="166" y="63" width="52" height="52" rx="6"/>
+    <rect x="222" y="70" width="52" height="52" rx="6"/>
+    <rect x="278" y="77" width="48" height="48" rx="6"/>
+
+    <!-- Row 3 -->
+    <rect x="0" y="136" width="48" height="48" rx="6"/>
+    <rect x="54" y="126" width="52" height="52" rx="6"/>
+    <rect x="110" y="112" width="52" height="52" rx="6"/>
+    <rect x="166" y="119" width="52" height="52" rx="6"/>
+    <rect x="222" y="126" width="52" height="52" rx="6"/>
+    <rect x="278" y="133" width="48" height="48" rx="6"/>
+
+    <!-- Thumb cluster left -->
+    <rect x="195" y="192" width="48" height="48" rx="6"/>
+    <rect x="249" y="199" width="52" height="52" rx="6" transform="rotate(15, 275, 225)"/>
+    <rect x="309" y="206" width="52" height="76" rx="8" transform="rotate(30, 335, 244)"/>
+  </g>
+
+  <!-- Right half (shifted right) -->
+  <g stroke="#665C54" stroke-width="1.2" opacity="0.55" transform="translate(140, 0)">
+    <!-- Row 1 -->
+    <rect x="574" y="21" width="48" height="48" rx="6"/>
+    <rect x="626" y="14" width="52" height="52" rx="6"/>
+    <rect x="682" y="7" width="52" height="52" rx="6"/>
+    <rect x="738" y="0" width="52" height="52" rx="6"/>
+    <rect x="794" y="14" width="52" height="52" rx="6"/>
+    <rect x="852" y="28" width="48" height="48" rx="6"/>
+
+    <!-- Row 2 -->
+    <rect x="574" y="77" width="48" height="48" rx="6"/>
+    <rect x="626" y="70" width="52" height="52" rx="6"/>
+    <rect x="682" y="63" width="52" height="52" rx="6"/>
+    <rect x="738" y="56" width="52" height="52" rx="6"/>
+    <rect x="794" y="70" width="52" height="52" rx="6"/>
+    <rect x="852" y="82" width="48" height="48" rx="6"/>
+
+    <!-- Row 3 -->
+    <rect x="574" y="133" width="48" height="48" rx="6"/>
+    <rect x="626" y="126" width="52" height="52" rx="6"/>
+    <rect x="682" y="119" width="52" height="52" rx="6"/>
+    <rect x="738" y="112" width="52" height="52" rx="6"/>
+    <rect x="794" y="126" width="52" height="52" rx="6"/>
+    <rect x="852" y="136" width="48" height="48" rx="6"/>
+
+    <!-- Thumb cluster right (mirrored) -->
+    <rect x="539" y="206" width="52" height="76" rx="8" transform="rotate(-30, 565, 244)"/>
+    <rect x="599" y="199" width="52" height="52" rx="6" transform="rotate(-15, 625, 225)"/>
+    <rect x="657" y="192" width="48" height="48" rx="6"/>
+  </g>
+</svg>

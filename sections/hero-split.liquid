@@ -1,0 +1,141 @@
+{%- style -%}
+  .hero-split {
+    position: relative;
+    overflow: hidden;
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+  .hero-split__illustration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    max-width: 1400px;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .hero-split__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .hero-split__heading {
+    margin-bottom: 1.6rem;
+  }
+  .hero-split__accent {
+    color: rgb(var(--color-button));
+  }
+  .hero-split__heading strong {
+    color: var(--gruvbox-yellow, #FABD2F);
+    white-space: nowrap;
+  }
+  .hero-split__subtext {
+    font-family: var(--parix-font-mono, monospace);
+    color: rgba(var(--color-foreground), 0.7);
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 2.4rem;
+  }
+  @media screen and (max-width: 749px) {
+    .hero-split__illustration {
+      display: none;
+    }
+  }
+{%- endstyle -%}
+
+<div class="hero-split color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <img src="{{ 'hero-keyboard.svg' | asset_url }}" alt="" aria-hidden="true" class="hero-split__illustration" loading="eager">
+    <div class="hero-split__content">
+      <h2 class="hero-split__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h2>
+      {%- if section.settings.subtext != blank -%}
+        <p class="hero-split__subtext">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="button button--primary">
+          {{ section.settings.button_label | escape }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Split Keyboard",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Hand-Built <em>Split Keyboards</em>.",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h0",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "default": "Explore our range of ergonomic split keyboards. Hand-assembled in India for developers, creators, and minimalists.",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Shop Keyboards",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Split Keyboard"
+    }
+  ]
+}
+{% endschema %}

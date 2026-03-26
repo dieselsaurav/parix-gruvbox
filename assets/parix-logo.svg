@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 56" width="330" height="56">
+  <defs>
+    <!-- Keycap base shadow -->
+    <filter id="ks">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="0.5" flood-color="#1D2021" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- P keycap (accent) -->
+  <g filter="url(#ks)">
+    <rect x="0" y="4" width="50" height="48" rx="6" fill="#504945"/>
+    <rect x="3" y="5" width="44" height="38" rx="5" fill="#3C3836"/>
+    <text x="25" y="32" text-anchor="middle" font-family="'IBM Plex Mono', 'SF Mono', monospace" font-weight="500" font-size="20" fill="#FABD2F">P</text>
+  </g>
+
+  <!-- A keycap -->
+  <g filter="url(#ks)">
+    <rect x="56" y="4" width="50" height="48" rx="6" fill="#504945"/>
+    <rect x="59" y="5" width="44" height="38" rx="5" fill="#3C3836"/>
+    <text x="81" y="32" text-anchor="middle" font-family="'IBM Plex Mono', 'SF Mono', monospace" font-weight="500" font-size="20" fill="#EBDBB2">A</text>
+  </g>
+
+  <!-- R keycap -->
+  <g filter="url(#ks)">
+    <rect x="112" y="4" width="50" height="48" rx="6" fill="#504945"/>
+    <rect x="115" y="5" width="44" height="38" rx="5" fill="#3C3836"/>
+    <text x="137" y="32" text-anchor="middle" font-family="'IBM Plex Mono', 'SF Mono', monospace" font-weight="500" font-size="20" fill="#EBDBB2">R</text>
+  </g>
+
+  <!-- I keycap -->
+  <g filter="url(#ks)">
+    <rect x="168" y="4" width="50" height="48" rx="6" fill="#504945"/>
+    <rect x="171" y="5" width="44" height="38" rx="5" fill="#3C3836"/>
+    <text x="193" y="32" text-anchor="middle" font-family="'IBM Plex Mono', 'SF Mono', monospace" font-weight="500" font-size="20" fill="#EBDBB2">I</text>
+  </g>
+
+  <!-- X keycap -->
+  <g filter="url(#ks)">
+    <rect x="224" y="4" width="50" height="48" rx="6" fill="#504945"/>
+    <rect x="227" y="5" width="44" height="38" rx="5" fill="#3C3836"/>
+    <text x="249" y="32" text-anchor="middle" font-family="'IBM Plex Mono', 'SF Mono', monospace" font-weight="500" font-size="20" fill="#EBDBB2">X</text>
+  </g>
+</svg>

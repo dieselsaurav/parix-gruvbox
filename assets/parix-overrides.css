@@ -1,0 +1,185 @@
+/* === Parix.in Gruvbox Dark Theme === */
+
+:root {
+  --gruvbox-bg: #282828;
+  --gruvbox-bg2: #504945;
+  --gruvbox-bg3: #665C54;
+  --gruvbox-yellow: #FABD2F;
+  --gruvbox-aqua: #8EC07C;
+  --gruvbox-orange: #FE8019;
+  --gruvbox-green: #B8BB26;
+  --gruvbox-red: #FB4934;
+  --gruvbox-red-dim: #CC241D;
+  --parix-font-mono: var(--font-heading-family), 'Courier New', monospace;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+/* Monospace accents for price and product meta */
+.price-item,
+.price,
+.product__text,
+.badge {
+  font-family: var(--parix-font-mono);
+  letter-spacing: 0.02em;
+}
+
+/* Orange primary buttons, yellow on hover */
+.button--primary,
+.shopify-payment-button__button {
+  background: var(--gruvbox-orange) !important;
+  border: none !important;
+  color: var(--gruvbox-bg) !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.button--primary:hover,
+.shopify-payment-button__button:hover {
+  background: var(--gruvbox-yellow) !important;
+  box-shadow: 0 0 20px rgba(250, 189, 47, 0.3);
+}
+
+/* Sale badges — red */
+.badge--sale,
+.badge[class*="sale"],
+.price--on-sale .price-item--regular {
+  color: var(--gruvbox-red);
+}
+
+/* Compare-at / was-price — dim red with strikethrough */
+.price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Subtle border on cards (hover) */
+.card {
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--gruvbox-orange);
+}
+
+/* Product card spacing and typography */
+.card__content {
+  padding: 1.2rem 0.4rem;
+}
+
+.card__heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.price {
+  font-size: 1.4rem;
+}
+
+/* Landscape aspect ratio for keyboard product cards */
+.card__inner.ratio {
+  --ratio-percent: 56.25% !important; /* 16:9 landscape */
+}
+
+/* Image hover zoom on product cards */
+.card__media img {
+  transition: transform 0.4s ease;
+}
+
+.card__media:hover img {
+  transform: scale(1.05);
+}
+
+/* Header backdrop blur for sticky header */
+@media (prefers-reduced-motion: no-preference) {
+  .section-header {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* Announcement bar — subtle border */
+.announcement-bar {
+  border-bottom: 1px solid var(--gruvbox-bg2);
+}
+
+/* Variant pill — yellow outline on selection */
+.variant-input__input:checked + .variant-input__label {
+  border-color: var(--gruvbox-yellow) !important;
+  box-shadow: 0 0 8px rgba(250, 189, 47, 0.2);
+}
+
+/* Swatch input selected state */
+.swatch-input__input:checked + .swatch-input__label {
+  border-color: var(--gruvbox-yellow) !important;
+  box-shadow: 0 0 8px rgba(250, 189, 47, 0.2);
+}
+
+/* Footer social icons — large, yellow */
+.footer .list-social__link svg {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--gruvbox-yellow);
+  transition: fill 0.3s ease;
+}
+
+.footer .list-social__link:hover svg {
+  fill: var(--gruvbox-orange);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--gruvbox-bg); }
+::-webkit-scrollbar-thumb { background: var(--gruvbox-bg3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gruvbox-orange); }
+
+/* Links — aqua on hover */
+a:not(.button):not([class*="button"]):hover {
+  color: var(--gruvbox-aqua);
+  transition: color 0.2s ease;
+}
+
+/* Collapsible tab borders */
+.accordion {
+  border-color: var(--gruvbox-bg2);
+}
+
+/* Product media — warm glow on hover */
+.product__media-item {
+  transition: box-shadow 0.3s ease;
+}
+
+.product__media-item:hover {
+  box-shadow: 0 0 14px rgba(254, 128, 25, 0.2);
+}
+
+/* Hide "Shipping calculated at checkout" on product page */
+.product__tax {
+  display: none;
+}
+
+/* Hide "Powered by Shopify" */
+.copyright__content a[href*="shopify"] {
+  display: none;
+}
+
+/* Hide search — small catalog doesn't need it */
+details-modal[id*="Search"],
+.header__search {
+  display: none !important;
+}
+
+/* Remove gap between header and first section */
+.section-header + .shopify-section:first-of-type {
+  margin-top: 0 !important;
+}
+
+#MainContent {
+  margin-top: 0;
+}

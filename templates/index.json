@@ -1,0 +1,142 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-split",
+      "settings": {
+        "heading": "Hand-Built <strong>Split Keyboards</strong>.",
+        "heading_size": "h1",
+        "subtext": "Hand-assembled split keyboards for developers. Built to order with open source firmware. Free shipping India-wide.",
+        "button_label": "Shop Keyboards",
+        "button_link": "shopify:\/\/collections\/split-keyboards",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "collection": "split-keyboards",
+        "products_to_show": 8,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "show_view_all": true,
+        "view_all_style": "link",
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "padding_top": 16,
+        "padding_bottom": 24
+      }
+    },
+    "why_split": {
+      "type": "why-split-keyboards",
+      "blocks": {
+        "benefit-0": {
+          "type": "benefit",
+          "settings": {
+            "icon_text": "ergonomics()",
+            "title": "Ergonomic by Design",
+            "text": "<p>Your hands rest at natural shoulder width. No more hunching over a single keyboard slab. Columnar stagger aligns keys to your finger lengths.</p>"
+          }
+        },
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "icon_text": "typing.optimize()",
+            "title": "Fewer Keys, More Speed",
+            "text": "<p>Thumb clusters and layers replace reaching for distant keys. Your fingers travel less, and every key is within one key of home row.</p>"
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "icon_text": "firmware.flash()",
+            "title": "Fully Programmable",
+            "text": "<p>QMK\/ZMK firmware lets you remap every key. Macros, layers, tap-dance, combos — your keyboard, your rules. Open source, forever.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit-0",
+        "benefit-1",
+        "benefit-2"
+      ],
+      "settings": {
+        "heading": "Why Split Keyboards?",
+        "heading_size": "h1",
+        "subheading": "Designed for developers who type 8+ hours a day",
+        "columns_desktop": 3,
+        "button_label": "Shop All Keyboards",
+        "button_link": "shopify:\/\/collections\/split-keyboards",
+        "color_scheme": "scheme-2",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column-0": {
+          "type": "column",
+          "settings": {
+            "title": "Hand-Assembled",
+            "text": "<p>Every keyboard is built by hand in our workshop. No mass production — just careful assembly, testing, and quality checks before shipping.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Open Source Firmware",
+            "text": "<p>All our keyboards run ZMK or QMK firmware. Remap keys, create layers, add macros — full control, no vendor lock-in.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Ships Across India",
+            "text": "<p>Free shipping on all keyboards. Carefully packed and dispatched within 2 weeks of your order.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column-0",
+        "column-1",
+        "column-2"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_collection",
+    "why_split",
+    "multicolumn"
+  ]
+}
