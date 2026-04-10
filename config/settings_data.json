@@ -12,63 +12,6 @@
     "logo": "shopify://shop_images/parix_final.webp",
     "logo_width": 250,
     "favicon": "shopify://shop_images/parix_favicon_v2.svg",
-    "color_schemes": {
-      "scheme-1": {
-        "settings": {
-          "background": "#282828",
-          "background_gradient": "",
-          "text": "#EBDBB2",
-          "button": "#FABD2F",
-          "button_label": "#282828",
-          "secondary_button_label": "#FABD2F",
-          "shadow": "#1D2021"
-        }
-      },
-      "scheme-2": {
-        "settings": {
-          "background": "#3C3836",
-          "background_gradient": "",
-          "text": "#EBDBB2",
-          "button": "#FABD2F",
-          "button_label": "#282828",
-          "secondary_button_label": "#FABD2F",
-          "shadow": "#1D2021"
-        }
-      },
-      "scheme-3": {
-        "settings": {
-          "background": "#1D2021",
-          "background_gradient": "",
-          "text": "#EBDBB2",
-          "button": "#FABD2F",
-          "button_label": "#1D2021",
-          "secondary_button_label": "#FABD2F",
-          "shadow": "#1D2021"
-        }
-      },
-      "scheme-4": {
-        "settings": {
-          "background": "#1D2021",
-          "background_gradient": "",
-          "text": "#EBDBB2",
-          "button": "#FABD2F",
-          "button_label": "#1D2021",
-          "secondary_button_label": "#A89984",
-          "shadow": "#1D2021"
-        }
-      },
-      "scheme-5": {
-        "settings": {
-          "background": "#FABD2F",
-          "background_gradient": "",
-          "text": "#282828",
-          "button": "#282828",
-          "button_label": "#FABD2F",
-          "secondary_button_label": "#282828",
-          "shadow": "#1D2021"
-        }
-      }
-    },
     "type_header_font": "ibm_plex_mono_n4",
     "heading_scale": 110,
     "type_body_font": "ibm_plex_sans_n4",
@@ -168,7 +111,7 @@
     "brand_description": "<p></p>",
     "brand_image_width": 100,
     "social_facebook_link": "",
-    "social_instagram_link": "https://www.instagram.com/screens.code",
+    "social_instagram_link": "https://www.instagram.com/parix_in/",
     "social_youtube_link": "https://www.youtube.com/@parixin",
     "social_tiktok_link": "",
     "social_twitter_link": "",
@@ -199,7 +142,64 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {
+          "background": "#282828",
+          "background_gradient": "",
+          "text": "#ebdbb2",
+          "button": "#fabd2f",
+          "button_label": "#282828",
+          "secondary_button_label": "#fabd2f",
+          "shadow": "#1d2021"
+        }
+      },
+      "scheme-2": {
+        "settings": {
+          "background": "#3c3836",
+          "background_gradient": "",
+          "text": "#ebdbb2",
+          "button": "#fabd2f",
+          "button_label": "#282828",
+          "secondary_button_label": "#fabd2f",
+          "shadow": "#1d2021"
+        }
+      },
+      "scheme-3": {
+        "settings": {
+          "background": "#1d2021",
+          "background_gradient": "",
+          "text": "#ebdbb2",
+          "button": "#fabd2f",
+          "button_label": "#1d2021",
+          "secondary_button_label": "#fabd2f",
+          "shadow": "#1d2021"
+        }
+      },
+      "scheme-4": {
+        "settings": {
+          "background": "#1d2021",
+          "background_gradient": "",
+          "text": "#ebdbb2",
+          "button": "#fabd2f",
+          "button_label": "#1d2021",
+          "secondary_button_label": "#a89984",
+          "shadow": "#1d2021"
+        }
+      },
+      "scheme-5": {
+        "settings": {
+          "background": "#fabd2f",
+          "background_gradient": "",
+          "text": "#282828",
+          "button": "#282828",
+          "button_label": "#fabd2f",
+          "secondary_button_label": "#282828",
+          "shadow": "#1d2021"
+        }
+      }
+    }
   },
   "presets": {
     "Rise": {
