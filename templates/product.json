@@ -72,7 +72,7 @@
         "color_scheme": "scheme-1",
         "enable_sticky_info": true,
         "gallery_layout": "thumbnail_slider",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "mobile_thumbnails": "show",
         "hide_variants": true,

@@ -9,58 +9,133 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 110%;
+    width: 120%;
     max-width: 1400px;
+    height: auto;
     opacity: 0.4;
     pointer-events: none;
+    z-index: 0;
+  }
+  @media screen and (max-width: 749px) {
+    .hero-split__illustration { display: none; }
   }
   .hero-split__content {
     position: relative;
     z-index: 1;
-    text-align: center;
     max-width: 700px;
     margin: 0 auto;
     padding: 0 2rem;
+    text-align: center;
+  }
+  .hero-split__eyebrow,
+  .hero-split__cta {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-split__eyebrow {
+    font-family: var(--font-mono-family);
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: var(--gruvbox-aqua, #8EC07C);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+  }
+  .hero-split__eyebrow svg {
+    width: 1.4rem;
+    height: 1.4rem;
   }
   .hero-split__heading {
-    margin-bottom: 1.6rem;
-  }
-  .hero-split__accent {
-    color: rgb(var(--color-button));
+    margin: 0 0 1.6rem;
+    line-height: 1.05;
   }
   .hero-split__heading strong {
     color: var(--gruvbox-yellow, #FABD2F);
     white-space: nowrap;
+    font-weight: 700;
+  }
+  .hero-split__cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.85em;
+    background: currentColor;
+    margin-left: 0.1em;
+    vertical-align: -0.05em;
+    animation: hero-cursor-blink 1.1s steps(2, end) infinite;
+  }
+  @keyframes hero-cursor-blink {
+    50% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-split__cursor { animation: none; }
   }
   .hero-split__subtext {
-    font-family: var(--parix-font-mono, monospace);
+    font-family: var(--font-prose-family);
     color: rgba(var(--color-foreground), 0.7);
-    font-size: 1.5rem;
-    line-height: 1.6;
-    margin-bottom: 2.4rem;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.8rem;
   }
-  @media screen and (max-width: 749px) {
-    .hero-split__illustration {
-      display: none;
-    }
+  .hero-split__cta {
+    font-family: var(--font-mono-family);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.2rem 2rem;
+    color: rgb(var(--color-foreground));
+    border: 1px solid rgba(var(--color-foreground), 0.3);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .hero-split__cta-bracket {
+    color: var(--gruvbox-yellow, #FABD2F);
+    transition: color 0.2s ease;
+  }
+  .hero-split__cta:hover {
+    background: var(--gruvbox-yellow, #FABD2F);
+    color: var(--gruvbox-bg, #282828);
+    border-color: var(--gruvbox-yellow, #FABD2F);
+  }
+  .hero-split__cta:hover .hero-split__cta-bracket {
+    color: var(--gruvbox-bg, #282828);
   }
 {%- endstyle -%}
 
 <div class="hero-split color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
-    <img src="{{ 'hero-keyboard.svg' | asset_url }}" alt="" aria-hidden="true" class="hero-split__illustration" loading="eager" width="1400" height="788">
+    <img src="{{ 'hero-keyboard.svg' | asset_url }}" alt="" aria-hidden="true" class="hero-split__illustration" loading="eager" width="1200" height="300">
     <div class="hero-split__content">
-      <h2 class="hero-split__heading {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      {%- if section.settings.subtext != blank -%}
-        <p class="hero-split__subtext">{{ section.settings.subtext }}</p>
-      {%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_link }}" class="button button--primary">
-          {{ section.settings.button_label | escape }}
-        </a>
-      {%- endif -%}
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="hero-split__eyebrow">
+            {{- 'icon-keycap.svg' | inline_asset_content -}}
+            {{ section.settings.eyebrow | escape }}
+          </span>
+        {%- endif -%}
+        <h2 class="hero-split__heading {{ section.settings.heading_size }}">
+          {{ section.settings.heading -}}
+          {%- if section.settings.show_cursor -%}
+            <span class="hero-split__cursor" aria-hidden="true"></span>
+          {%- endif -%}
+        </h2>
+        {%- if section.settings.subtext != blank -%}
+          <p class="hero-split__subtext">{{ section.settings.subtext }}</p>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="hero-split__cta">
+            <span class="hero-split__cta-bracket" aria-hidden="true">[</span>
+            {{ section.settings.button_label | escape }}
+            <span class="hero-split__cta-bracket" aria-hidden="true">]</span>
+          </a>
+        {%- endif -%}
     </div>
   </div>
 </div>
@@ -71,6 +146,13 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "default": "~/parix/keyboards",
+      "label": "Eyebrow (terminal prompt)",
+      "info": "Small mono label above heading. Leave blank to hide."
+    },
     {
       "type": "inline_richtext",
       "id": "heading",
@@ -87,6 +169,12 @@
       ],
       "default": "h0",
       "label": "Heading size"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cursor",
+      "default": true,
+      "label": "Show blinking cursor after heading"
     },
     {
       "type": "text",

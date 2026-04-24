@@ -1,0 +1,101 @@
+<!-- SEO meta title: Getting Started with Home Row Mods — Parix Split Keyboards -->
+<!-- SEO meta description: Learn how home row mods work on split keyboards. Covers GACS order, tap vs hold, tapping term, quick tap, and practical tuning tips for ZMK hold-tap behavior. -->
+<!-- Blog title: Getting Started with Home Row Mods -->
+<!-- Publish to: Shopify Admin > Online Store > Blog posts > Add blog post > HTML editor -->
+
+<p>If you use a split keyboard with fewer than 50 keys, you've probably run into the modifier problem. There aren't enough keys for dedicated Ctrl, Alt, Shift, and GUI (Super/Cmd/Win) on both halves. Home row mods solve this: your modifiers live on the home row keys themselves, activated by holding instead of tapping.</p>
+
+<p>It sounds odd for about a day. Then it clicks, and reaching for a corner modifier feels barbaric.</p>
+
+<h2>What are home row mods?</h2>
+
+<p>Home row mods assign a modifier to each home row key as a secondary "hold" action. Tap <code>A</code> and you get <code>a</code>. Hold <code>A</code> and you get <code>GUI</code> (or whichever modifier you've mapped). Your fingers never leave the home row to hit a modifier — zero travel, zero contortion.</p>
+
+<p>On a standard QWERTY layout with GACS order, it looks like this:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Tap</th>
+      <th>Hold (left)</th>
+      <th>Hold (right)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Pinky</td><td>A / ;</td><td>GUI</td><td>GUI</td></tr>
+    <tr><td>Ring</td><td>S / L</td><td>ALT</td><td>ALT</td></tr>
+    <tr><td>Middle</td><td>D / K</td><td>CTRL</td><td>CTRL</td></tr>
+    <tr><td>Index</td><td>F / J</td><td>SHIFT</td><td>SHIFT</td></tr>
+  </tbody>
+</table>
+
+<p>Both halves mirror each other, so you always have every modifier under both hands.</p>
+
+<h2>Why GACS order?</h2>
+
+<p>GACS (GUI, ALT, CTRL, SHIFT from pinky to index) is the most common arrangement, and for good reason:</p>
+
+<ul>
+  <li><strong>Shift on index fingers.</strong> Shift is the most frequently used modifier. Your index fingers are the fastest and most precise — they handle rapid tap-hold transitions best, reducing misfires.</li>
+  <li><strong>GUI on pinkies.</strong> GUI is used least often during typing. Pinkies are slower, so putting an infrequent modifier there minimises accidental activations.</li>
+  <li><strong>CTRL on middle fingers.</strong> Common shortcuts (Ctrl+C, Ctrl+V, Ctrl+S) stay comfortable with the middle finger hold.</li>
+</ul>
+
+<p>Other orderings exist (GASC, CAGS), but GACS gives the best balance of comfort and misfire resistance for most typists.</p>
+
+<h2>Tap vs hold: how the firmware decides</h2>
+
+<p>The core mechanism is the <a href="https://zmk.dev/docs/keymaps/behaviors/hold-tap" target="_blank" rel="noopener">hold-tap behavior</a> in ZMK (or <code>mod-tap</code> in QMK). When you press a home row mod key, the firmware starts a timer and waits:</p>
+
+<ul>
+  <li><strong>Release before the tapping term expires</strong> — it's a tap. You get the letter.</li>
+  <li><strong>Hold past the tapping term</strong> — it's a hold. You get the modifier.</li>
+  <li><strong>Press another key while holding</strong> — depending on configuration, this can trigger the modifier immediately (hold) or still register as a tap.</li>
+</ul>
+
+<p>The trick is tuning these timers so the firmware's decisions match your intent.</p>
+
+<h2>Key settings to understand</h2>
+
+<h3>Tapping term</h3>
+
+<p>The time window (in milliseconds) that separates a tap from a hold. Too short and fast taps register as holds. Too long and intentional holds feel sluggish. Most people land between 200ms and 280ms. Start at 280ms and lower it as you get comfortable.</p>
+
+<h3>Tap-preferred flavor</h3>
+
+<p>ZMK's hold-tap has several "flavors" that determine how it resolves when you press another key during the tapping term. <strong>Tap-preferred</strong> (<code>flavor = "tap-preferred"</code>) is recommended for home row mods because it biases toward producing letters during fast typing. The modifier only activates if you hold past the tapping term without pressing anything else first — which matches how you actually use modifiers (deliberate holds) vs letters (fast rolls).</p>
+
+<h3>Quick tap</h3>
+
+<p><code>quick-tap-ms</code> in ZMK. If you tap a key and then tap it again within this window, the second tap is always a letter — no hold-tap evaluation. This prevents misfires when you're typing repeated characters quickly (like <code>ff</code> in <code>diff</code> or <code>ss</code> in <code>less</code>). A value of 175ms works well for most typists.</p>
+
+<h3>Require prior idle (global-quick-tap)</h3>
+
+<p><code>require-prior-idle-ms</code> in ZMK. If you pressed <em>any</em> key within this window before pressing a home row mod key, it skips hold-tap evaluation entirely and outputs the letter immediately. This is the single biggest misfire killer — during fast typing, your keystrokes are close together, so the firmware knows you're typing, not modifying. A value of 150ms is a solid starting point.</p>
+
+<p>The combination of tap-preferred flavor, quick tap, and require-prior-idle eliminates the vast majority of misfires while keeping intentional modifier use snappy.</p>
+
+<h2>Practical tips for getting comfortable</h2>
+
+<ul>
+  <li><strong>Start with generous timings.</strong> Set your tapping term high (280ms), quick-tap around 175ms, and require-prior-idle around 150ms. Prioritise no misfires over speed. Tighten later.</li>
+  <li><strong>Use one hand at a time.</strong> Home row mods work best when you hold the modifier on one hand and tap the target key on the other — the same pattern as touch typing. <code>Hold F (Shift) + tap J</code> gives you <code>J</code>. This also sidesteps same-hand timing issues.</li>
+  <li><strong>Don't fight misfires — tune them.</strong> If you're getting accidental modifiers, the answer is almost never "type differently." Adjust your tapping term, enable require-prior-idle, or switch to tap-preferred. The firmware should adapt to you.</li>
+  <li><strong>Give it a week.</strong> The first few days feel slow. By day 3-4 you stop thinking about it. By day 7 it's muscle memory. Every experienced home row mod user says the same thing: the adjustment period is short and the payoff is permanent.</li>
+  <li><strong>Layer keys can use hold-tap too.</strong> The same behavior works for layer-tap keys on thumbs. If you have a thumb key that taps Space and holds to activate a Nav layer, the same tuning principles apply.</li>
+</ul>
+
+<h2>Home row mods on Parix keyboards</h2>
+
+<p>All Parix wireless keyboards ship with home row mods pre-configured using GACS order and <a href="https://github.com/urob/zmk-config" target="_blank" rel="noopener">urob's hold-tap tuning</a> — tap-preferred flavor, require-prior-idle, and tested timing values. You don't need to configure anything out of the box. Just type.</p>
+
+<p>If you want to adjust timings or try a different order, you can edit the hold-tap parameters in your <code>.keymap</code> file, use <a href="https://zmk.studio" target="_blank" rel="noopener">ZMK Studio</a> for real-time changes, or fork the firmware repo and tweak from there. The <a href="/pages/firmware">firmware page</a> has repo links and flashing instructions.</p>
+
+<h2>Further reading</h2>
+
+<ul>
+  <li><a href="https://zmk.dev/docs/keymaps/behaviors/hold-tap" target="_blank" rel="noopener">ZMK hold-tap documentation</a> — full reference for flavors, timing parameters, and configuration</li>
+  <li><a href="https://github.com/urob/zmk-config" target="_blank" rel="noopener">urob's zmk-config</a> — well-documented ZMK setup with refined home row mod tuning</li>
+  <li><a href="https://precondition.github.io/home-row-mods" target="_blank" rel="noopener">precondition's home row mods guide</a> — in-depth writeup on the topic (QMK-focused but concepts apply to ZMK)</li>
+</ul>

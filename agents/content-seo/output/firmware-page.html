@@ -1,0 +1,52 @@
+<!-- Keyboard Firmware — parix.in page content -->
+<!-- Page title: Keyboard Firmware -->
+<!-- SEO meta title: Keyboard Firmware — Parix Split Keyboards -->
+<!-- SEO meta description: Open-source firmware for Parix split keyboards. ZMK with Studio and mouse keys for wireless, QMK with Vial for wired. Fully customisable keymaps. -->
+<!-- Paste into Shopify Admin > Pages > Add Page > HTML editor -->
+
+<p>Every Parix keyboard ships with open-source firmware, pre-flashed and ready to type. Wired boards run QMK. Wireless boards run ZMK. Both are fully customisable.</p>
+
+<h2>Wired keyboards — QMK + Vial</h2>
+<p>All Parix wired keyboards run <a href="https://qmk.fm" target="_blank" rel="noopener">QMK</a> with <a href="https://get.vial.today" target="_blank" rel="noopener">Vial</a> enabled. Plug in, open the Vial app, and remap keys in real time. No flashing, no code.</p>
+
+<h2>Wireless keyboards — ZMK</h2>
+<p>All Parix wireless keyboards run <a href="https://zmk.dev" target="_blank" rel="noopener">ZMK</a> with Bluetooth, mouse keys, and <a href="https://zmk.studio" target="_blank" rel="noopener">ZMK Studio</a> enabled out of the box.</p>
+
+<h3>Firmware repos</h3>
+<h3>Totem</h3>
+<p><a href="https://github.com/dieselsaurav/zmk-config-totem-studio" target="_blank" rel="noopener">github.com/dieselsaurav/zmk-config-totem-studio</a></p>
+<p>ZMK 4 (Zephyr 4.1). Miryoku-inspired 38-key layout with home row mods, vim-style navigation, 6 thumb-activated layers, full mouse emulation, 14 combos, and ZMK Studio support. Based on <a href="https://github.com/urob/zmk-config" target="_blank" rel="noopener">urob's</a> tuning for home row mods and combos.</p>
+
+<h3>Corne Wireless</h3>
+<p><a href="https://github.com/dieselsaurav/zmk-for-keyboards" target="_blank" rel="noopener">github.com/dieselsaurav/zmk-for-keyboards</a></p>
+<p>ZMK config for the Corne wireless split keyboard with nice!nano v2. Supports nice!view and nice!OLED displays. ZMK Studio enabled on left half.</p>
+
+<p>See each repo's README for the full keymap layout, layer maps, combo tables, and build configuration.</p>
+
+<h2>Customising your keymap</h2>
+
+<h3>ZMK Studio (no flashing)</h3>
+<p>Plug the left half in via USB, open <a href="https://zmk.studio" target="_blank" rel="noopener">zmk.studio</a> in Chrome, and connect. Remap keys, adjust layers, configure hold-taps — changes apply instantly and persist across reboots. Works over Bluetooth too.</p>
+
+<h3>Keymap Editor (visual, via GitHub)</h3>
+<p>Fork your keyboard's repo, then open <a href="https://nickcoutsos.github.io/keymap-editor/" target="_blank" rel="noopener">Keymap Editor</a>. It connects to your fork, gives you a visual drag-and-drop interface, and commits changes directly to GitHub. The <code>build.yml</code> Action compiles the firmware automatically.</p>
+
+<h3>Flashing a custom build</h3>
+<ol>
+  <li><strong>Fork</strong> the repo on GitHub.</li>
+  <li><strong>Edit</strong> the <code>.keymap</code> file in <code>config/</code>.</li>
+  <li><strong>Push.</strong> GitHub Actions builds the firmware. No local toolchain needed.</li>
+  <li><strong>Download</strong> the <code>.uf2</code> files from the Actions tab.</li>
+  <li><strong>Flash.</strong> Double-press reset on the controller. It mounts as a USB drive. Drag the <code>.uf2</code> onto it.</li>
+  <li><strong>Flash both halves</strong> — left and right have separate <code>.uf2</code> files.</li>
+</ol>
+
+<h2>Resources</h2>
+<ul>
+  <li><a href="https://zmk.dev/docs" target="_blank" rel="noopener">ZMK Documentation</a> — keymaps, behaviors, combos, macros</li>
+  <li><a href="https://zmk.studio" target="_blank" rel="noopener">ZMK Studio</a> — real-time keymap editor for wireless keyboards</li>
+  <li><a href="https://nickcoutsos.github.io/keymap-editor/" target="_blank" rel="noopener">Keymap Editor</a> — visual ZMK keymap editor via GitHub</li>
+  <li><a href="https://get.vial.today" target="_blank" rel="noopener">Vial</a> — real-time keymap editor for wired keyboards</li>
+</ul>
+
+<p>Need help? Email <a href="mailto:diesel.saurav@gmail.com">diesel.saurav@gmail.com</a>.</p>
