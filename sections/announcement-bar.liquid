@@ -40,6 +40,7 @@
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
+            <span class="announcement-bar__prefix" aria-hidden="true">$</span>
             <span>{{ section.blocks.first.settings.text | escape }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
@@ -100,6 +101,7 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
+                      <span class="announcement-bar__prefix" aria-hidden="true">$</span>
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}

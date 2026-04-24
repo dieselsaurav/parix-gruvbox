@@ -1,42 +1,92 @@
 .why-split__header {
-  margin-bottom: 4rem;
+  margin-bottom: 4.8rem;
+  text-align: left;
+}
+
+.why-split__eyebrow {
+  display: block;
+  font-family: var(--font-mono-family);
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--gruvbox-aqua, #8EC07C);
+  margin-bottom: 1.2rem;
+}
+
+.why-split__heading {
+  margin: 0;
 }
 
 .why-split__subheading {
-  font-family: var(--parix-font-mono, monospace);
-  color: var(--gruvbox-bg3, #665C54);
+  font-family: var(--font-prose-family);
+  color: rgba(var(--color-foreground), 0.6);
   margin-top: 1rem;
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 
 .why-split__card {
-  padding: 3rem 2rem;
-  border: 1px solid var(--gruvbox-bg2, #504945);
-  border-radius: 4px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  padding: 4rem 2.4rem 3rem;
+  border: none;
+  background: transparent;
+  text-align: left;
 }
 
-.why-split__card:hover {
-  border-color: var(--gruvbox-yellow, #FABD2F);
-  box-shadow: 0 0 20px rgba(250, 189, 47, 0.1);
+.why-split__card::before,
+.why-split__card::after {
+  position: absolute;
+  font-family: var(--font-mono-family);
+  color: rgba(var(--color-foreground), 0.35);
+  font-size: 2.4rem;
+  line-height: 1;
+  transition: color 0.3s ease;
+  pointer-events: none;
 }
 
-.why-split__icon--text {
-  font-family: var(--parix-font-mono, monospace);
-  font-size: 1.4rem;
-  color: var(--gruvbox-green, #B8BB26);
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
+.why-split__card::before {
+  content: "\2510"; /* ┐ top-right corner */
+  top: 0.6rem;
+  right: 0.8rem;
+}
+
+.why-split__card::after {
+  content: "\2514"; /* └ bottom-left corner */
+  bottom: 0.6rem;
+  left: 0.8rem;
+}
+
+.why-split__card:hover::before,
+.why-split__card:hover::after {
+  color: var(--gruvbox-orange, #FE8019);
+}
+
+.why-split__index {
+  font-family: var(--font-mono-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  color: rgba(var(--color-foreground), 0.5);
+  display: block;
+  margin-bottom: 1.4rem;
 }
 
 .why-split__card-title {
-  margin-bottom: 1rem;
+  margin: 0 0 1.2rem;
 }
 
 .why-split__card-text {
-  color: #A89984;
-  line-height: 1.7;
+  color: rgba(var(--color-foreground), 0.75);
+  line-height: 1.65;
+}
+
+.why-split__card-spec {
+  font-family: var(--font-mono-family);
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.55);
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(var(--color-foreground), 0.15);
+  letter-spacing: 0.02em;
 }
 
 .why-split__cta {

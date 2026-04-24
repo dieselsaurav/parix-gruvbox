@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-content",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
