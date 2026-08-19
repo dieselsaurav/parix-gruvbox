@@ -60,7 +60,7 @@
           "settings": {
             "icon_text": "firmware.flash()",
             "title": "Fully Programmable",
-            "text": "<p>QMK/ZMK firmware lets you remap every key. Macros, layers, tap-dance, combos \u2014 your keyboard, your rules. Open source, forever.</p>"
+            "text": "<p>QMK/ZMK firmware lets you remap every key. Macros, layers, tap-dance, combos — your keyboard, your rules. Open source, forever.</p>"
           }
         }
       },
@@ -88,7 +88,7 @@
           "type": "column",
           "settings": {
             "title": "Hand-Assembled",
-            "text": "<p>Every keyboard is built by hand in our workshop. No mass production \u2014 just careful assembly, testing, and quality checks before shipping.</p>",
+            "text": "<p>Every keyboard is built by hand in our workshop. No mass production — just careful assembly, testing, and quality checks before shipping.</p>",
             "link_label": "",
             "link": ""
           }
@@ -97,7 +97,7 @@
           "type": "column",
           "settings": {
             "title": "ZMK & QMK, Out of the Box",
-            "text": "<p>All our keyboards ship with ZMK or QMK firmware. Remap keys, build layers, flash macros \u2014 your layout, your rules. No vendor lock-in, ever.</p>",
+            "text": "<p>All our keyboards ship with ZMK or QMK firmware. Remap keys, build layers, flash macros — your layout, your rules. No vendor lock-in, ever.</p>",
             "link_label": "",
             "link": ""
           }
@@ -106,7 +106,7 @@
           "type": "column",
           "settings": {
             "title": "Made to Order, Not Off a Shelf",
-            "text": "<p>We build your keyboard after you order it \u2014 hand-assembled, tested, and dispatched within 2 weeks. Free shipping anywhere in India.</p>",
+            "text": "<p>We build your keyboard after you order it — hand-assembled, tested, and dispatched in 3–4 weeks. Free shipping anywhere in India.</p>",
             "link_label": "",
             "link": ""
           }
