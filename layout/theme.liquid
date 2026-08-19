@@ -9,9 +9,13 @@
 
     <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
 
-    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
-      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
-    {%- endunless -%}
+    {%- comment -%}
+      No preconnect to fonts.shopifycdn.com: the picker fonts are never
+      rendered (parix-overrides.css reassigns the family variables to the
+      self-hosted Iosevka faces), and their font_face/preload emissions were
+      removed below. Opening a connection to a host we never fetch from is the
+      same waste those removals set out to fix.
+    {%- endcomment -%}
 
     <title>
       {{ page_title }}

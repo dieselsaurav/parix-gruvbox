@@ -145,6 +145,22 @@ body {
   box-shadow: none !important;
 }
 
+/* Dawn draws each button's border as a box-shadow ring on ::after, coloured by
+   --color-button (yellow) — `border` and `box-shadow` on the element itself do
+   not touch it. Left alone it puts a yellow hairline inside the orange Add to
+   cart, and doubles the Buy it now outline into a solid ring instead of the
+   faint one intended. Focus is unaffected: that comes from :focus-visible
+   outlines, not this pseudo-element. */
+.product-form__submit.button--primary::after,
+.product-form__submit.button--primary:hover::after {
+  box-shadow: none;
+}
+
+.shopify-payment-button__button::after,
+.shopify-payment-button__button:hover::after {
+  box-shadow: none !important;
+}
+
 /* Sale badges — red */
 .badge--sale,
 .badge[class*="sale"],
@@ -305,20 +321,12 @@ body {
 }
 
 
-/* Header backdrop blur for sticky header.
-   A blur is not motion — gating it on prefers-reduced-motion left those users
-   with a fully transparent sticky bar. Opaque fallback first, blur on top. */
-.section-header {
-  background: rgba(40, 40, 40, 0.92);
-}
-
-@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
-  .section-header {
-    background: rgba(40, 40, 40, 0.72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-}
+/* No backdrop styling on .section-header: Dawn paints the header on the CHILD
+   .header-wrapper, which carries an opaque background-color plus .gradient
+   (base.css). Anything set here renders behind that and is never visible — the
+   original blur rule had the same problem. A frosted header would mean making
+   .header-wrapper translucent first; the sticky bar is opaque and legible as
+   it stands, so this is left alone deliberately. */
 
 /* === Header inline menu — terminal nav === */
 .header__inline-menu .header__menu-item {
@@ -440,9 +448,11 @@ a:not(.button):not([class*="button"]):hover {
    does not, which was pushing the columns out of step.
    lh is exactly two line-boxes; the em value is the fallback (line-height
    computes to 1.4545 here, so 2 lines ≈ 2.91em — do not assume 1.25). */
-.multicolumn-card__info > h3 {
-  min-height: 2.91em;
-  min-height: 2lh;
+@media screen and (min-width: 750px) {
+  .multicolumn-card__info > h3 {
+    min-height: 2.91em;
+    min-height: 2lh;
+  }
 }
 
 /* Collapsible tab borders */
@@ -1016,7 +1026,11 @@ details-modal[id*="Search"],
 .page-width--narrow .rte ul li::before,
 .page-content__body ul li::before,
 .product__description ul li::before {
-  content: "–" / "";
+  /* NOT given alt text: these lists are list-style:none, so if a browser
+     without content alt-text support (Safari <17.4, Firefox <133) drops this
+     declaration the items lose their marker entirely. A screen reader saying
+     "dash" is a smaller cost than no visible bullet. */
+  content: "–";
   position: absolute;
   left: 0;
   font-family: var(--font-mono-family);
