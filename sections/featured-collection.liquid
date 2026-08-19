@@ -1,6 +1,19 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  /* Matches .multicolumn__eyebrow / .why-split__eyebrow so all three
+     content sections share one heading grammar. */
+  .featured-collection__eyebrow {
+    display: block;
+    font-family: var(--font-mono-family);
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: var(--gruvbox-aqua, #8EC07C);
+    margin-bottom: 1.2rem;
+  }
+{%- endstyle -%}
+
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
@@ -76,6 +89,9 @@
       {%- assign collection_heading = section.settings.title -%}
       {%- if collection_heading == blank and section.settings.collection != blank -%}
         {%- assign collection_heading = section.settings.collection.title -%}
+      {%- endif -%}
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="featured-collection__eyebrow">{{ section.settings.eyebrow | escape }}</span>
       {%- endif -%}
       {%- if collection_heading != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -227,6 +243,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "info": "Small mono label shown above the title. Leave blank to hide."
+    },
     {
       "type": "collection",
       "id": "collection",

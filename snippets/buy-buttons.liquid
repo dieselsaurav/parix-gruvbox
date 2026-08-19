@@ -74,7 +74,14 @@
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            {%- comment -%}
+              Add to cart stays primary even with dynamic checkout on. Dawn's
+              default demotes it to button--secondary, which left the ghost
+              button above a solid Buy it now — the secondary action visually
+              leading the primary one. Buy it now is styled as the outline
+              partner in parix-overrides.css.
+            {%- endcomment -%}
+            class="product-form__submit button button--full-width button--primary"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null

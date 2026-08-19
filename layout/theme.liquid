@@ -39,18 +39,14 @@
 
     {{ content_for_header }}
 
-    {%- liquid
-      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-    %}
-
     {% style %}
-      {{ settings.type_body_font | font_face: font_display: 'swap' }}
-      {{ body_font_bold | font_face: font_display: 'swap' }}
-      {{ body_font_italic | font_face: font_display: 'swap' }}
-      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {%- comment -%}
+        The Shopify font-picker faces (IBM Plex) are intentionally NOT emitted.
+        parix-overrides.css reassigns --font-body-family / --font-heading-family
+        to Iosevka, so nothing on the site ever rendered in Plex — the files were
+        downloaded, and two of them preloaded at high priority, purely as waste.
+        See also the removed preloads below.
+      {%- endcomment -%}
 
       @font-face {
         font-family: 'Iosevka Slab';
@@ -301,16 +297,11 @@
       {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
+    {%- comment -%}
+      Picker-font preloads removed: they fetched IBM Plex at high priority on
+      every page and competed with the Iosevka preloads below, which are the
+      faces actually rendered.
+    {%- endcomment -%}
 
     {% comment %}theme-check-disable AssetPreload{% endcomment %}
     <link rel="preload" as="font" href="{{ 'iosevka-slab-regular.woff2' | asset_url }}" type="font/woff2" crossorigin>

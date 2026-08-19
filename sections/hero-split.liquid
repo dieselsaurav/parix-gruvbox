@@ -89,7 +89,10 @@
     text-decoration: none;
     padding: 1.2rem 2rem;
     color: rgb(var(--color-foreground));
-    border: 1px solid rgba(var(--color-foreground), 0.3);
+    /* Resting border picks up the yellow the brackets already use, so the
+       button reads as an affordance before hover rather than a faint outline.
+       Hover fills with the same yellow — one colour, two states. */
+    border: 1px solid rgba(250, 189, 47, 0.55);
     background: transparent;
     display: inline-flex;
     align-items: center;

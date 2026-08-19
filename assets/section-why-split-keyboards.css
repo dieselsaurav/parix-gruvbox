@@ -31,6 +31,12 @@
   border: none;
   background: transparent;
   text-align: left;
+  /* Column so the spec footer can pin to the bottom — the corner brackets
+     already promise an aligned baseline across the row. Height stays auto:
+     the flex parent stretches these to equal height, and setting an explicit
+     height here would opt out of that stretch. */
+  display: flex;
+  flex-direction: column;
 }
 
 .why-split__card::before,
@@ -77,13 +83,16 @@
 .why-split__card-text {
   color: rgba(var(--color-foreground), 0.75);
   line-height: 1.65;
+  /* Minimum gap before the pinned footer — margin-top:auto alone collapses to
+     zero on whichever card is tallest. */
+  margin-bottom: 1.6rem;
 }
 
 .why-split__card-spec {
   font-family: var(--font-mono-family);
   font-size: 1.2rem;
   color: rgba(var(--color-foreground), 0.55);
-  margin-top: 1.6rem;
+  margin-top: auto;
   padding-top: 1.2rem;
   border-top: 1px dashed rgba(var(--color-foreground), 0.15);
   letter-spacing: 0.02em;
@@ -91,4 +100,25 @@
 
 .why-split__cta {
   margin-top: 4rem;
+}
+
+/* Match the hero CTA's bracket grammar — mono, uppercase, [ label ] */
+.why-split__cta-button {
+  font-family: var(--font-mono-family);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* .button is a flex container, so whitespace-only text nodes between the
+   brackets and the label are dropped — space them explicitly. */
+.why-split__cta-bracket {
+  opacity: 0.65;
+}
+
+.why-split__cta-bracket:first-child {
+  margin-right: 0.4em;
+}
+
+.why-split__cta-bracket:last-child {
+  margin-left: 0.4em;
 }

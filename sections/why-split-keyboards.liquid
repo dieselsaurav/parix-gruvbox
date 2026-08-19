@@ -42,8 +42,10 @@
 
     {%- if section.settings.button_label != blank -%}
       <div class="why-split__cta center">
-        <a href="{{ section.settings.button_link }}" class="button button--primary">
+        <a href="{{ section.settings.button_link }}" class="button button--primary why-split__cta-button">
+          <span class="why-split__cta-bracket" aria-hidden="true">[</span>
           {{ section.settings.button_label | escape }}
+          <span class="why-split__cta-bracket" aria-hidden="true">]</span>
         </a>
       </div>
     {%- endif -%}
