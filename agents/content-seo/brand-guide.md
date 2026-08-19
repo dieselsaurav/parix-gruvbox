@@ -106,7 +106,7 @@ India's first custom split keyboard workshop. One person, hand-assembling every 
 ## Social Media
 
 ### Instagram
-- Handle: [@screens.code](https://www.instagram.com/screens.code)
+- Handle: [@parix_in](https://www.instagram.com/parix_in)
 - Content: keyboard builds, desk setups, build process shots
 
 ### YouTube
