@@ -1,0 +1,32 @@
+{%- comment -%}
+  Payment method icons for parix's Cashfree checkout: UPI, Visa, Mastercard,
+  RuPay. Deliberately NOT shop.enabled_payment_types — that list is whatever
+  the gateway registered, not a curated row. Wallets and EMI are enabled too
+  (confirmed 2026-09-21) but have no single logo, so they are named in the
+  meta line (snippets/parix-meta-line.liquid) rather than here.
+
+  If Shopify has no SVG for a type, the type falls back to a plain mono text
+  chip so the method is still named. Used by sections/footer.liquid and
+  sections/main-cart-footer.liquid.
+
+  Accepts:
+  - class {String} extra classes on the <ul>
+{%- endcomment -%}
+
+{%- assign parix_payment_types = 'upi:UPI,visa:Visa,master:Mastercard,rupay:RuPay' | split: ',' -%}
+<ul class="list list-payment parix-payment{% if class != blank %} {{ class }}{% endif %}" role="list" aria-label="Payment methods: UPI, Visa, Mastercard, RuPay">
+  {%- for pair in parix_payment_types -%}
+    {%- assign bits = pair | split: ':' -%}
+    {%- assign type = bits[0] -%}
+    {%- assign label = bits[1] -%}
+    {%- capture icon -%}{{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}{%- endcapture -%}
+    {%- if icon contains '<svg' -%}
+      <li class="list-payment__item parix-payment__item" data-payment-type="{{ type }}">
+        {{ icon }}
+        <span class="visually-hidden">{{ label }}</span>
+      </li>
+    {%- else -%}
+      <li class="list-payment__item parix-payment__item parix-payment__item--text" data-payment-type="{{ type }}">{{ label }}</li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>

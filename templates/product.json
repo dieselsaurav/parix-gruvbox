@@ -16,6 +16,12 @@
         "price": {
           "type": "price"
         },
+        "checkout_meta": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{ 'parix-checkout.css' | asset_url | stylesheet_tag }}\n{%- comment -%} Checkout reassurance under the price (2026-09-21, agents/marketing/output/checkout-audit-2026-09-21.md). Dispatch is omitted for keycap sets: KLP Lamé ships in 2 weeks, not 3–4. {%- endcomment -%}\n{%- liquid\n  assign parix_show_dispatch = true\n  if product.type == 'Keycaps'\n    assign parix_show_dispatch = false\n  endif\n-%}\n{%- render 'parix-meta-line', show_payment: true, show_shipping: true, show_dispatch: parix_show_dispatch, class: 'parix-meta--product' -%}"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -61,6 +67,7 @@
         "title",
         "caption",
         "price",
+        "checkout_meta",
         "variant_picker",
         "buy_buttons",
         "description",

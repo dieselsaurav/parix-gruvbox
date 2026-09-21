@@ -1,0 +1,124 @@
+/* ============================================================
+   CHECKOUT REASSURANCE — 2026-09-21
+   One mono meta line answers "how do I pay / when does it ship"
+   under the product price, in the cart drawer and on the cart page.
+   Payment icons (accepted methods only) sit above the cart Check out
+   button and in the footer. Tokens only: Gruvbox palette, mono family
+   (the tokens are declared in parix-overrides.css, which loads first).
+   Loaded per section (cart drawer, cart footer, footer, product
+   custom_liquid block) rather than from theme.liquid; fold into
+   parix-overrides.css when this ships.
+   Source: agents/marketing/output/checkout-audit-2026-09-21.md
+   ============================================================ */
+
+.parix-meta {
+  font-family: var(--font-mono-family);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  color: rgba(var(--color-foreground), 0.6);
+  margin: 0;
+}
+
+/* Each group wraps as a unit on narrow screens */
+.parix-meta__group {
+  white-space: nowrap;
+}
+
+/* Group separator — wider than the single-space dot inside a group */
+.parix-meta__sep {
+  color: var(--gruvbox-neutral);
+  margin: 0 0.55em;
+}
+
+/* Product page: directly under the price, tighter than the column rhythm */
+.product__info-wrapper .product__info-container > .parix-meta--product {
+  margin-top: 0.8rem;
+}
+
+/* Cart drawer + cart page: replaces Dawn's tax note inside <small class="tax-note"> */
+.tax-note .parix-meta {
+  display: block;
+  font-size: 1.2rem;
+}
+
+/* Above the Check out button — centred with the button */
+.parix-meta--checkout {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Payment icons — cart page only (footer keeps Dawn's .list-payment layout).
+   Cart-page rules are scoped to .cart__footer so they never reach the drawer. */
+.cart__footer .cart__ctas .parix-payment {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 0 0.4rem;
+  padding: 0;
+}
+
+.cart__footer .cart__ctas .parix-meta--checkout {
+  width: 100%;
+  max-width: 36rem;
+}
+
+/* Dawn lays .cart__ctas out as a flex ROW from 750px up (it only ever held the
+   Check out button). With the meta line (and, on the cart page, the icons)
+   added, the row squeezes them beside the button. Stack the CTA block
+   vertically instead — drawer and cart page alike. The button keeps Dawn's
+   1rem top margin (.cart__ctas > * + *), so no gap here. */
+@media screen and (min-width: 750px) {
+  .cart__ctas {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Cart page: right-aligned like the totals above it. The drawer keeps the
+     default stretch, so its line stays centred over the full-width button. */
+  .cart__footer .cart__ctas {
+    align-items: flex-end;
+  }
+
+  .cart__footer .cart__ctas .parix-payment,
+  .cart__footer .cart__ctas .parix-meta--checkout {
+    margin-left: auto;
+  }
+
+  /* Right-align with the totals and the shipping line above (Dawn right-aligns
+     .tax-note from 750px). The -0.5rem cancels the last item's padding so the
+     RuPay icon's edge sits on the button's edge. */
+  .cart__footer .cart__ctas .parix-payment {
+    justify-content: flex-end;
+    margin-right: -0.5rem;
+  }
+
+  .cart__footer .cart__ctas .parix-meta--checkout {
+    text-align: right;
+  }
+}
+
+.parix-payment__item svg {
+  display: block;
+  height: 2.4rem;
+  width: auto;
+}
+
+/* A method Shopify has no icon for is named in a mono chip instead */
+.parix-payment__item--text {
+  font-family: var(--font-mono-family);
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.75);
+  border: 1px solid var(--gruvbox-bg2);
+  padding: 0.2rem 0.6rem;
+  line-height: 1.6;
+  height: 2.4rem;
+  align-items: center;
+}
