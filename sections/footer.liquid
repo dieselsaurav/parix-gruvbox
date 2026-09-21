@@ -3,6 +3,7 @@
 {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-menu.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
+{{ 'parix-checkout.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
@@ -286,13 +287,8 @@
         {%- if section.settings.payment_enable -%}
           <div class="footer__payment">
             <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-            <ul class="list list-payment" role="list">
-              {%- for type in shop.enabled_payment_types -%}
-                <li class="list-payment__item">
-                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                </li>
-              {%- endfor -%}
-            </ul>
+            {%- comment -%} Accepted methods only (UPI, Visa, Mastercard, RuPay), not shop.enabled_payment_types — see snippets/parix-payment-icons.liquid. {%- endcomment -%}
+            {%- render 'parix-payment-icons' -%}
           </div>
         {%- endif -%}
       </div>

@@ -1,0 +1,42 @@
+{%- comment -%}
+  Checkout reassurance line in the theme's mono meta style.
+  Added 2026-09-21 after the checkout walk-through (agents/marketing/output/checkout-audit-2026-09-21.md).
+
+  Accepts:
+  - show_payment  {Boolean}  "UPI · Cards · Wallets"
+  - show_shipping {Boolean}  "Free shipping across India"
+  - show_dispatch {Boolean}  "Ships in 3–4 weeks"
+  - class         {String}   extra classes on the <p>
+
+  The strings are kept here, not in the locale file, so this snippet is the one
+  place to change them. "EMI" is deliberately absent — not confirmed on the
+  Cashfree account. Groups are separated by a wider mono dot; the words inside
+  a group keep a single-space dot.
+
+  Usage:
+  {% render 'parix-meta-line', show_payment: true, show_shipping: true, show_dispatch: true, class: 'parix-meta--product' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign parts = ''
+  if show_payment
+    assign parts = parts | append: 'UPI · Cards · Wallets|'
+  endif
+  if show_shipping
+    assign parts = parts | append: 'Free shipping across India|'
+  endif
+  if show_dispatch
+    assign parts = parts | append: 'Ships in 3–4 weeks|'
+  endif
+  assign parts = parts | split: '|'
+-%}
+{%- if parts.size > 0 -%}
+  <p class="parix-meta{% if class != blank %} {{ class }}{% endif %}">
+    {%- for part in parts -%}
+      {%- unless forloop.first -%}
+        <span class="parix-meta__sep" aria-hidden="true">&middot;</span>
+      {%- endunless -%}
+      <span class="parix-meta__group">{{ part }}</span>
+    {%- endfor -%}
+  </p>
+{%- endif -%}
