@@ -34,7 +34,8 @@
   <p class="parix-meta{% if class != blank %} {{ class }}{% endif %}">
     {%- for part in parts -%}
       {%- unless forloop.first -%}
-        <span class="parix-meta__sep" aria-hidden="true">&middot;</span>
+        {%- comment -%} <wbr>: the whitespace-stripped spans leave no break opportunity, and each group is nowrap, so without it the whole line is unbreakable. {%- endcomment -%}
+        <span class="parix-meta__sep" aria-hidden="true">&middot;</span><wbr>
       {%- endunless -%}
       <span class="parix-meta__group">{{ part }}</span>
     {%- endfor -%}
