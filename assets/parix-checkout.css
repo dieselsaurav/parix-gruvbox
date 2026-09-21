@@ -50,8 +50,9 @@
   font-size: 1.2rem;
 }
 
-/* Payment icons — cart page (footer keeps Dawn's .list-payment layout) */
-.cart__ctas .parix-payment {
+/* Payment icons — cart page only (footer keeps Dawn's .list-payment layout).
+   Cart-page rules are scoped to .cart__footer so they never reach the drawer. */
+.cart__footer .cart__ctas .parix-payment {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -61,37 +62,42 @@
   padding: 0;
 }
 
-.cart__ctas .parix-meta--checkout {
+.cart__footer .cart__ctas .parix-meta--checkout {
   width: 100%;
   max-width: 36rem;
-  margin-bottom: 1rem;
 }
 
-/* Cart page: Dawn lays .cart__ctas out as a flex ROW from 750px up (it only
-   ever held the Check out button). With icons + meta line added, the row
-   squeezed the icon list to ~55px and stacked the icons. Stack the CTA
-   block vertically instead, right-aligned like the totals above it. */
+/* Dawn lays .cart__ctas out as a flex ROW from 750px up (it only ever held the
+   Check out button). With the meta line (and, on the cart page, the icons)
+   added, the row squeezes them beside the button. Stack the CTA block
+   vertically instead — drawer and cart page alike. The button keeps Dawn's
+   1rem top margin (.cart__ctas > * + *), so no gap here. */
 @media screen and (min-width: 750px) {
   .cart__ctas {
     flex-direction: column;
-    align-items: flex-end;
     gap: 0;
   }
 
-  .cart__ctas .parix-payment,
-  .cart__ctas .parix-meta--checkout {
+  /* Cart page: right-aligned like the totals above it. The drawer keeps the
+     default stretch, so its line stays centred over the full-width button. */
+  .cart__footer .cart__ctas {
+    align-items: flex-end;
+  }
+
+  .cart__footer .cart__ctas .parix-payment,
+  .cart__footer .cart__ctas .parix-meta--checkout {
     margin-left: auto;
   }
 
   /* Right-align with the totals and the shipping line above (Dawn right-aligns
      .tax-note from 750px). The -0.5rem cancels the last item's padding so the
      RuPay icon's edge sits on the button's edge. */
-  .cart__ctas .parix-payment {
+  .cart__footer .cart__ctas .parix-payment {
     justify-content: flex-end;
     margin-right: -0.5rem;
   }
 
-  .cart__ctas .parix-meta--checkout {
+  .cart__footer .cart__ctas .parix-meta--checkout {
     text-align: right;
   }
 }

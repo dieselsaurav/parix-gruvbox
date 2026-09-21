@@ -1,8 +1,9 @@
 {%- comment -%}
-  Payment method icons for the methods parix actually accepts through Cashfree:
-  UPI, Visa, Mastercard, RuPay. Deliberately NOT shop.enabled_payment_types —
-  that list is whatever the gateway registered and would also surface wallets
-  or EMI, which are not confirmed on the account (2026-09-21).
+  Payment method icons for parix's Cashfree checkout: UPI, Visa, Mastercard,
+  RuPay. Deliberately NOT shop.enabled_payment_types — that list is whatever
+  the gateway registered, not a curated row. Wallets and EMI are enabled too
+  (confirmed 2026-09-21) but have no single logo, so they are named in the
+  meta line (snippets/parix-meta-line.liquid) rather than here.
 
   If Shopify has no SVG for a type, the type falls back to a plain mono text
   chip so the method is still named. Used by sections/footer.liquid and
