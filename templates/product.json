@@ -19,7 +19,7 @@
         "checkout_meta": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{{ 'parix-checkout.css' | asset_url | stylesheet_tag }}\n{%- comment -%} Checkout reassurance under the price (2026-09-21, agents/marketing/output/checkout-audit-2026-09-21.md). Payment + free shipping only: the dispatch timeline is left to the description and the cart, to keep this line short. {%- endcomment -%}\n{%- render 'parix-meta-line', show_payment: true, show_shipping: true, class: 'parix-meta--product' -%}"
+            "custom_liquid": "{{ 'parix-checkout.css' | asset_url | stylesheet_tag }}\n{%- comment -%} Checkout reassurance under the price (2026-09-21, agents/marketing/output/checkout-audit-2026-09-21.md). Payment + free shipping only: the dispatch timeline is left to the description, to keep this line short. {%- endcomment -%}\n{%- render 'parix-meta-line', show_payment: true, show_shipping: true, class: 'parix-meta--product' -%}"
           }
         },
         "variant_picker": {
