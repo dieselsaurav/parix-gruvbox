@@ -499,16 +499,6 @@
         <!-- Start blocks -->
         <!-- Subtotals -->
 
-        {%- liquid
-          # Dispatch applies to keyboards; a cart holding only keycap sets omits it (KLP Lamé ships in 2 weeks).
-          assign parix_cart_dispatch = false
-          for item in cart.items
-            if item.product.type != 'Keycaps'
-              assign parix_cart_dispatch = true
-              break
-            endif
-          endfor
-        -%}
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -530,8 +520,8 @@
           </div>
 
           <small class="tax-note caption-large rte">
-            {%- comment -%} Dawn's "Taxes, discounts and shipping calculated at checkout" replaced 2026-09-21: shipping is free and one line, so say the useful thing. {%- endcomment -%}
-            {%- render 'parix-meta-line', show_shipping: true, show_dispatch: parix_cart_dispatch -%}
+            {%- comment -%} Dawn's "Taxes, discounts and shipping calculated at checkout" replaced 2026-09-21: shipping is free and one line, so say the useful thing. Dispatch time removed from the cart 2026-09-25 (test: keyboard checkouts stopped completing after it went live; lead time stays on product pages). {%- endcomment -%}
+            {%- render 'parix-meta-line', show_shipping: true -%}
           </small>
         </div>
 
